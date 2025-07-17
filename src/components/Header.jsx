@@ -1,4 +1,3 @@
-import { navItems } from "../Constant";
 import suitbg from "../assets/suitbg.png";
 import { useState, useEffect, use } from "react";
 const Header = () => {
@@ -20,6 +19,15 @@ const Header = () => {
         };
 
     }, []);
+
+    const navItems = [
+        { label: "Work", href: "#work" },
+        { label: "About", href: "#about" },
+        { label: "Services", href: "#Services" },
+        { label: "Ideas", href: "#ideas" },
+        { label: "Career", href: "#career" },
+        { label: "Contact", href: "#contact" },
+    ];
 
     return (
         <nav className={`sticky top-0 z-50 py-3 bg-orange-600 border-b border-neutral-700/80 ${visible ? "translate-y-0" : "-translate-y-full"} transition-transform duration-300 ease-in-out`}>
