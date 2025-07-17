@@ -48,7 +48,7 @@ function Banner() {
             </div>
 
             {/* Slanted bottom section */}
-            <div className="absolute bottom-0 left-0 right-0 h-32 md:h-40 lg:h-100">
+            <div className="absolute bottom-0 left-0 right-0 h-32 md:h-40 lg:h-110">
                 <svg
                     className="absolute top-0 left-0 w-full h-full"
                     viewBox="0 0 1200 200"

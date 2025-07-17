@@ -1,74 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
+import LazyImage from './Lazyload';
+import { generateMockData } from './Mockdata';
 
-// Mock data for demonstration
-const generateMockData = () => {
-    const titles = [
-        "Kenali Tingkatan Influencers berdasarkan Jumlah Followers",
-        "Jangan Asal Pilih Influencer, Berikut Cara Menyusun Strategi Influencer Marketing yang Tepat",
-        "Tips Memilih Influencer yang Tepat untuk Brand Anda",
-        "Strategi Content Marketing di Era Digital",
-        "Cara Mengukur ROI dari Influencer Marketing",
-        "Panduan Lengkap Social Media Marketing untuk Pemula",
-        "Tren Terbaru dalam Dunia Digital Marketing",
-        "Mengoptimalkan Engagement Rate di Social Media"
-    ];
-
-    const data = [];
-    for (let i = 1; i <= 100; i++) {
-        data.push({
-            id: i,
-            title: titles[Math.floor(Math.random() * titles.length)],
-            date: new Date(2022, 8, Math.floor(Math.random() * 30) + 1),
-            image: `https://picsum.photos/300/200?random=${i}`,
-            category: "Digital Marketing"
-        });
-    }
-    return data;
-};
-
-const LazyImage = ({ src, alt, className }) => {
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [isInView, setIsInView] = useState(false);
-    const imgRef = useRef();
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsInView(true);
-                    observer.disconnect();
-                }
-            },
-            { threshold: 0.1 }
-        );
-
-        if (imgRef.current) {
-            observer.observe(imgRef.current);
-        }
-
-        return () => observer.disconnect();
-    }, []);
-
-    return (
-        <div ref={imgRef} className={className}>
-            {isInView && (
-                <img
-                    src={src}
-                    alt={alt}
-                    className={`w-full h-full object-cover transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'
-                        }`}
-                    onLoad={() => setIsLoaded(true)}
-                />
-            )}
-            {!isLoaded && isInView && (
-                <div className="w-full h-full bg-gray-200 animate-pulse flex items-center justify-center">
-                    <div className="text-gray-400">Loading...</div>
-                </div>
-            )}
-        </div>
-    );
-};
+// ListPost component
 
 const ListPost = () => {
     const [posts] = useState(generateMockData());
@@ -266,8 +201,8 @@ const ListPost = () => {
                             <button
                                 onClick={() => setCurrentPage(page)}
                                 className={`px-3 py-2 rounded-md text-sm ${currentPage === page
-                                        ? 'bg-orange-500 text-white'
-                                        : 'hover:bg-gray-100 text-gray-700'
+                                    ? 'bg-orange-500 text-white'
+                                    : 'hover:bg-gray-100 text-gray-700'
                                     }`}
                             >
                                 {page}
