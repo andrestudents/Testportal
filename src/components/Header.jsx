@@ -1,4 +1,4 @@
-import { navItems } from "../constant";
+import { navItems } from "../Constant";
 import suitbg from "../assets/suitbg.png";
 import { useState, useEffect, use } from "react";
 const Header = () => {
